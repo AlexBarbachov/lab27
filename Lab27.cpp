@@ -10,6 +10,7 @@ void menu(map<string, tuple<int, string, string>>& villagerColors);
 void increaseFriendship(map<string, tuple<int, string, string>>& villagerColors);
 void decreaseFriendship(map<string, tuple<int, string, string>>& villagerColors);
 void displayVillagers(map<string, tuple<int, string, string>>& villagerColors);
+void searchVillager(map<string, tuple<int, string, string>>& villagerColors);
 
 
 int main() {
@@ -94,6 +95,11 @@ void decreaseFriendship(map<string, tuple<int, string, string>>& villagerColors)
         cout << "Villager not found." << endl;
     }
     displayVillagers(villagerColors);
+}
+
+void searchVillager(map<string, tuple<int, string, string>>& villagerColors)
+{
+    
 }
 
 void displayVillagers(map<string, tuple<int, string, string>>& villagerColors)
