@@ -1,7 +1,10 @@
 #include <iostream>
 #include <map>
 #include <vector>
+#include <string>
+#include <tuple>
 using namespace std;
+
 
 int main() {
     // declarations
@@ -9,9 +12,9 @@ int main() {
 
     // insert elements into the map
     // note how the right-hand side of the assignment are the vector elements
-    villagerColors["Audie"] = {"Orange", "Yellow", "Red"};
-    villagerColors["Raymond"] = {"Black", "Gray", "White"};
-    villagerColors.insert({"Marshal", {"Blue", "White", "Black"}});
+    villagerColors["Audie"] = make_tuple(7, "Cat", "Meow");
+    villagerColors["Raymond"] = make_tuple(3, "Wolf", "Howl");
+    villagerColors.insert({"Marshal", make_tuple(9, "Dog", "Bark")});
 
     // access the map using a range-based for loop
     cout << "Villagers and their favorite colors (range-based for loop):" << endl;
