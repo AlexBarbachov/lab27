@@ -8,7 +8,7 @@ using namespace std;
 
 int main() {
     // declarations
-    map<string, vector<string>> villagerColors;
+    map<string, tuple<int, string, string>> villagerColors;
 
     // insert elements into the map
     // note how the right-hand side of the assignment are the vector elements
@@ -17,23 +17,22 @@ int main() {
     villagerColors.insert({"Marshal", make_tuple(9, "Dog", "Bark")});
 
     // access the map using a range-based for loop
-    cout << "Villagers and their favorite colors (range-based for loop):" << endl;
+    cout << "Villagers and their details (range-based for loop):" << endl;
     for (auto pair : villagerColors) {
-        cout << pair.first << ": ";
-        for (auto color : pair.second)
-            cout << color << " ";
-        cout << endl;
+        cout << pair.first << ": ["
+            << get<0>(pair.second) << ", "
+            << get<1>(pair.second) << ", "
+            << get<2>(pair.second) << "]" << endl;
     }
 
     // access the map using iterators
-    cout << "\nVillagers and their favorite colors (iterators):" << endl;
-    for (map<string, vector<string>>::iterator it = villagerColors.begin(); 
+    cout << "\nVillagers and their details (iterators):" << endl;
+    for (map<string, tuple<int, string, string>>::iterator it = villagerColors.begin(); 
                                                it != villagerColors.end(); ++it) {
-        cout << it->first << ": ";
-        for (auto color : it->second) {
-            cout << color << " ";
-        }
-        cout << endl;
+        cout << it->first << ": ["
+            << get<0>(it->second) << ", "
+            << get<1>(it->second) << ", "
+            << get<2>(it->second) << "]" << endl;  
     }
 
     // delete an element
