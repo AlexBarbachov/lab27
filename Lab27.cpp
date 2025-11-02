@@ -43,10 +43,10 @@ int main() {
     auto it = villagerColors.find(searchKey);
     if (it != villagerColors.end()) {  // the iterator points to beyond the end of the map
                                        // if searchKey is not found
-        cout << "\nFound " << searchKey << "'s favorite colors: ";
-        for (auto color : it->second)  // range loop to traverse the value/vector
-            cout << color << " ";
-        cout << endl;
+        cout << "\nFound " << searchKey << "'s details: ["
+            << get<0>(it->second) << ", "
+            << get<1>(it->second) << ", "
+            << get<2>(it->second) << "]" << endl;
     } else
         cout << endl << searchKey << " not found." << endl;
 
