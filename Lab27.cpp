@@ -6,6 +6,10 @@
 using namespace std;
 
 
+void menu(map<string, tuple<int, string, string>>& villagerColors);
+void increaseFriendship(map<string, tuple<int, string, string>>& villagerColors);
+
+
 int main() {
     // declarations
     map<string, tuple<int, string, string>> villagerColors;
@@ -56,4 +60,31 @@ int main() {
     cout << "Size after clear: " << villagerColors.size() << endl;
 
     return 0;
+}
+
+
+void menu(map<string, tuple<int, string, string>>& villagerColors)
+{
+    int choice;
+    
+    
+}
+
+
+void increaseFriendship(map<string, tuple<int, string, string>>& villagerColors)
+{
+    string name;
+    cout << "Enter villager name to increase friendship level: ";
+    cin >> name;
+    auto it = villagerColors.find(name);
+    if (it != villagerColors.end())
+    {
+        int lvl = get<0>(it->second);
+        get<0>(it->second) = min(lvl + 1, 10);
+        cout << name << "'s friendship level increased to" << get<0>(it->second) << "." << endl;
+    }
+    else
+    {
+        cout << "Villager not found." << endl;
+    }
 }
