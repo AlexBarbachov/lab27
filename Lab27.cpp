@@ -40,7 +40,7 @@ void menu(map<string, tuple<int, string, string>>& villagerColors)
         cout << "2. Decrease Friendship level" << endl;
         cout << "3. Search for villager" << endl;
         cout << "4. Exit" << endl;
-        cout << "Enter choice";
+        cout << "Enter choice: ";
         cin >> choice;
 
         switch (choice)
@@ -169,6 +169,16 @@ void deleteVillager(map<string, tuple<int, string, string>>& villagerColor)
     cout << "Enter villager that you want to delete: ";
     getline(cin, name);
     
-    auto it = villagerColors.find(name);
-    if (it != )
+    auto it = villagerColor.find(name);
+    if (it != villagerColor.end())
+    {
+        villagerColor.erase(it);
+        cout << name << " deleted" << endl;
+
+    }
+    else
+    {
+        cout << "Villager not found. " << endl;
+    }
+    displayVillagers(villagerColor);
 }
