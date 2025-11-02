@@ -11,7 +11,8 @@ void increaseFriendship(map<string, tuple<int, string, string>>& villagerColors)
 void decreaseFriendship(map<string, tuple<int, string, string>>& villagerColors);
 void displayVillagers(map<string, tuple<int, string, string>>& villagerColors);
 void searchVillager(map<string, tuple<int, string, string>>& villagerColors);
-
+void addVillager(map<string, tuple<int, string, string>>& villagerColor);
+void deleteVillager(map<string, tuple<int, string, string>>& villagerColor);
 
 int main() {
     // declarations
@@ -39,20 +40,27 @@ void menu(map<string, tuple<int, string, string>>& villagerColors)
         cout << "2. Decrease Friendship level" << endl;
         cout << "3. Search for villager" << endl;
         cout << "4. Exit" << endl;
+        cout << "Enter choice";
         cin >> choice;
 
         switch (choice)
         {
-            case 1: 
-                increaseFriendship(villagerColors);
+            case 1:
+                addVillager(villagerColors);
                 break;
             case 2:
-                decreaseFriendship(villagerColors);
+                deleteVillager(villagerColors);
                 break;
-            case 3:
-                searchVillager(villagerColors);
+            case 3: 
+                increaseFriendship(villagerColors);
                 break;
             case 4:
+                decreaseFriendship(villagerColors);
+                break;
+            case 5:
+                searchVillager(villagerColors);
+                break;
+            case 6:
                 break;
             default: 
                 cout << "Invalid choice. Try again." << endl;
@@ -131,4 +139,36 @@ void displayVillagers(map<string, tuple<int, string, string>>& villagerColors)
             << get<2>(detail) << "]" << endl;
     }
     cout << endl;
+}
+
+void addVillager(map<string, tuple<int, string, string>>& villagerColor)
+{
+    string name, species, catchphrase;
+    int friendshipLvl;
+
+    cout << "Villager name: ";
+    getline(cin, name);
+    cout << "Friendship Level: ";
+    cin >> friendshipLvl;
+    cout << "Species: ";
+    cin.ignore();
+    getline(cin, species);
+    cout << "Catchphrase: ";
+    cin.ignore();
+    getline(cin, catchphrase);
+
+    villagerColor[name] = make_tuple(friendshipLvl, species, catchphrase);
+    cout << name << " added." << endl;
+    displayVillagers(villagerColor);
+}
+
+
+void deleteVillager(map<string, tuple<int, string, string>>& villagerColor)
+{
+    string name;
+    cout << "Enter villager that you want to delete: ";
+    getline(cin, name);
+    
+    auto it = villagerColors.find(name);
+    if (it != )
 }
