@@ -22,6 +22,7 @@ int main() {
     villagerColors["Raymond"] = make_tuple(3, "Wolf", "Howl");
     villagerColors.insert({"Marshal", make_tuple(9, "Dog", "Bark")});
 
+    menu(villagerColors);
     return 0;
 }
 
@@ -37,18 +38,21 @@ void menu(map<string, tuple<int, string, string>>& villagerColors)
         cout << "2. Decrease Friendship level" << endl;
         cout << "3. Search for villager" << endl;
         cout << "4. Exit" << endl;
+        cin >> choice;
 
         switch (choice)
         {
             case 1: 
                 increaseFriendship(villagerColors);
+                break;
             case 2:
                 decreaseFriendship(villagerColors);
+                break;
             case 4:
                 break;
             default: 
                 cout << "Invalid choice. Try again." << endl;
-                continue; 
+                break; 
         }
     }    
 }
@@ -76,13 +80,13 @@ void increaseFriendship(map<string, tuple<int, string, string>>& villagerColors)
 void decreaseFriendship(map<string, tuple<int, string, string>>& villagerColors)
 {
     string name;
-    cout << "Enter villager name to increase friendship level: ";
+    cout << "Enter villager name to decrease friendship level: ";
     cin >> name;
     auto it = villagerColors.find(name);
     if (it != villagerColors.end())
     {
         int lvl = get<0>(it->second);
-        get<0>(it->second) = min(lvl - 1, 0);
+        get<0>(it->second) = max(lvl - 1, 0);
         cout << name << "'s friendship level decreased to" << get<0>(it->second) << "." << endl;
     }
     else
@@ -100,7 +104,7 @@ void displayVillagers(map<string, tuple<int, string, string>>& villagerColors)
         cout << name << ": ["
             << get<0>(detail) << ", "
             << get<1>(detail) << ", "
-            << get<2>(detail) << "." << endl;
+            << get<2>(detail) << "]" << endl;
     }
     cout << endl;
 }
