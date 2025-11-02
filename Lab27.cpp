@@ -30,7 +30,27 @@ void menu(map<string, tuple<int, string, string>>& villagerColors)
 {
     int choice;
     
-    
+    while (choice != 4)
+    {
+        cout << "\nMenu:" << endl;
+        cout << "1. Increase Friendship level" << endl;
+        cout << "2. Decrease Friendship level" << endl;
+        cout << "3. Search for villager" << endl;
+        cout << "4. Exit" << endl;
+
+        switch (choice)
+        {
+            case 1: 
+                increaseFriendship(villagerColors);
+            case 2:
+                decreaseFriendship(villagerColors);
+            case 4:
+                break;
+            default: 
+                cout << "Invalid choice. Try again." << endl;
+                continue; 
+        }
+    }    
 }
 
 
