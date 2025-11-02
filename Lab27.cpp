@@ -49,6 +49,9 @@ void menu(map<string, tuple<int, string, string>>& villagerColors)
             case 2:
                 decreaseFriendship(villagerColors);
                 break;
+            case 3:
+                searchVillager(villagerColors);
+                break;
             case 4:
                 break;
             default: 
@@ -99,7 +102,22 @@ void decreaseFriendship(map<string, tuple<int, string, string>>& villagerColors)
 
 void searchVillager(map<string, tuple<int, string, string>>& villagerColors)
 {
+    string name;
+    cout << "Enter villager name to search";
+    cin >> name;
     
+    auto it = villagerColors.find(name);
+    if (it != villagerColors.end())
+    {
+        cout << name << ": ["
+            << get<0>(it->second) << ", "
+            << get<1>(it->second) << ", "
+            << get<2>(it->second) << "]" << endl;
+    }
+    else
+    {
+        cout << "Villager not found." << endl;
+    }
 }
 
 void displayVillagers(map<string, tuple<int, string, string>>& villagerColors)
